@@ -1,0 +1,7 @@
+task :default => :test
+
+task :test do
+  require "cutest"
+
+  Cutest.run(Dir["test/*.rb"])
+end
