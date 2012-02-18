@@ -1,2 +1,3 @@
-cuba
-mote
+cuba -v 3.0.0.rc1
+mote -v 0.2.0
+capybara -v 1.1.2
