@@ -23,10 +23,6 @@ class Cuba
     partial("layout", locals.merge(content: partial(template, locals),
                                    session: session))
   end
-
-  def session
-    env["rack.session"]
-  end
 end
 
 Cuba.define do
