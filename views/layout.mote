@@ -47,7 +47,7 @@
     </div>
 
     <div class="container">
-      {{ partial "notices" }}
+      {{ partial "notices", session: session }}
 
       {{ content }}
     </div> <!-- /container -->
