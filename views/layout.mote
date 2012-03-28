@@ -1,20 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>{{title}} | Site Name</title>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="/css/app.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>{{ title }} | Site Name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/less/bootstrap.less" rel="stylesheet/less" type="text/css">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the
+                              way to the bottom of the topbar */
+      }
+    </style>
+    <script src="/js/less.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    % if session[:success]
-      {{ session.delete(:success) }}
-      % end
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Site name</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
 
-    % if session[:error]
-      {{ session.delete(:error) }}
-    % end
+              % if current_user
+                <li><a href="/logout">Logout</a></li>
+              % else
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+              % end
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-    {{content}}
+    <div class="container">
+      {{ partial "notices" }}
+
+      {{ content }}
+    </div> <!-- /container -->
   </body>
 </html>

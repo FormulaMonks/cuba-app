@@ -10,7 +10,7 @@ module PasswordRecovery
   end
 
   def self.deliver(user, token)
-    Malone.deliver(from: Prelude::MAIL_FROM,
+    Malone.deliver(from: Settings::MAIL_FROM,
                    to: user.email,
                    subject: "Password Reset Instructions",
                    text: MESSAGE % [user.id, token])
@@ -23,6 +23,6 @@ module PasswordRecovery
 
     To continue follow this link:
 
-    http://#{Prelude::HOST}/password/reset/%s/%s
+    http://#{Settings::HOST}/password/reset/%s/%s
   EOT
 end

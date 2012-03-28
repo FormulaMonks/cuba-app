@@ -29,12 +29,17 @@ class Guests < Cuba
       on post, param("user") do |params|
         user = User.new(params)
 
-        if user.save
-          authenticate(user)
+        begin
+          if user.save
+            authenticate(user)
 
-          session[:success] = "You have successfully signed up."
-          res.redirect "/dashboard", 303
-        else
+            session[:success] = "You have successfully signed up."
+            res.redirect "/dashboard", 303
+          else
+            res.write view("signup", title: "Signup", user: user)
+          end
+        rescue Ohm::UniqueIndexViolation
+          session[:error] = "That email has been taken."
           res.write view("signup", title: "Signup", user: user)
         end
       end

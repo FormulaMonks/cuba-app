@@ -1,3 +1,5 @@
-<h1>Your Dashboard</h1>
+<div class="page-header">
+  <h1>Your Dashboard</h1>
+</div>
 
 <p>In views/dashboard.mote</p>

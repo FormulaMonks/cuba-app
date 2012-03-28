@@ -1,7 +1,15 @@
-<h1>Signup</h1>
+<div class="page-header">
+  <h1>Signup</h1>
+</div>
 
-<form action="/signup" method="post">
+<form class="well" action="/signup" method="post">
+  <label>Email</label>
   <input type="text" name="user[email]" value="{{ user.email }}">
+
+  <label>Password</label>
   <input type="password" name="user[password]" value="">
-  <button type="submit" name="commit">Signup</button>
+
+  <div>
+    <button class="btn" type="submit" name="commit">Signup</button>
+  </div>
 </form>
