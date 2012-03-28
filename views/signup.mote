@@ -1,0 +1,7 @@
+<h1>Signup</h1>
+
+<form action="/signup" method="post">
+  <input type="text" name="user[email]" value="{{ user.email }}">
+  <input type="password" name="user[password]" value="">
+  <button type="submit" name="commit">Signup</button>
+</form>

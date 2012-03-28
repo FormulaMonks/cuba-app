@@ -1,0 +1,4 @@
+<form action="/password/recovery" method="post">
+  <input type="text" name="email" value="">
+  <button type="submit" name="commit">Next</button>
+</form>
