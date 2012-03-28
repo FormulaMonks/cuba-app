@@ -1,4 +1,6 @@
-<h1>Hello, world!</h1>
+<div class="page-header">
+  <h1>Hello, world!</h1>
+</div>
 
 <p>
   This is a <a href="http://cuba.is">Cuba</a> app skeleton,
@@ -13,7 +15,9 @@
   and the template is located at <code>views/home.mote</code>.
 </p>
 
-<h2>Testing</h2>
+<div class="page-header">
+  <h1>Testing</h1>
+</div>
 
 <p>
   There's a user story written for you at <code>test/site.rb</code>.
@@ -23,7 +27,9 @@
   <code>rake test</code>.
 </p>
 
-<h2>Dependencies</h2>
+<div class="page-header">
+  <h1>Dependencies</h1>
+</div>
 
 <p>
   All of the dependencies ideally should be pushed to the <code>.gems</code> file,
