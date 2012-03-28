@@ -15,6 +15,9 @@ Cuba.use Rack::Static,
 Cuba.plugin Cuba::Mote
 Cuba.plugin Shield::Helpers
 
+# We use the more secure PBKDF2 password strategy (iterations = 5000)
+Shield::Password.strategy = Shield::Password::PBKDF2
+
 Cuba.define do
   persist_session!
 
