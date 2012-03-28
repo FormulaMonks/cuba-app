@@ -1,0 +1,6 @@
+<form action="/login" method="post">
+  <input type="text" name="username" value="{{ username }}">
+  <input type="password" name="password" value="">
+  <input type="checkbox" name="remember" value="1">
+  <button type="submit" name="submit">Login</button>
+</form>

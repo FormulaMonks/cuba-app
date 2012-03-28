@@ -7,6 +7,14 @@
     <link href="/css/app.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    % if session[:success]
+      {{ session.delete(:success) }}
+      % end
+
+    % if session[:error]
+      {{ session.delete(:error) }}
+    % end
+
     {{content}}
   </body>
 </html>
