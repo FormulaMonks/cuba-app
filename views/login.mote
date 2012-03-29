@@ -6,7 +6,10 @@
   <label>Email</label>
   <input type="text" name="username" value="{{ username }}">
 
-  <label>Password</label>
+  <label>
+    Password
+    <a href="/password/recovery">(forgot password?)</a>
+  </label>
   <input type="password" name="password" value="">
 
   <label class="checkbox">
