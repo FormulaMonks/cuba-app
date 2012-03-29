@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>Password Reset</h1>
+</div>
+
+<form class="form-horizontal" action="/password/reset/{{ id }}/{{ token }}" method="post">
+  <fieldset>
+    <div class="control-group {{ 'error' if reset.errors.has_key?(:password) }}">
+      <label class="control-label" for="new_password">New Password:</label>
+      <div class="controls">
+        <input id="new_password" type="password" name="user[password]"
+               value="{{ reset.password }}" autofocus>
+
+        % if reset.errors.has_key?(:password)
+          <span class="help-inline">
+            You need to supply a valid password.
+          </span>
+        % end
+      </div>
+    </div>
+
+    <div class="control-group {{ 'error' if reset.errors.has_key?(:password_confirmation) }}">
+      <label class="control-label" for="new_password">Confirm Password:</label>
+      <div class="controls">
+        <input id="new_password" type="password" name="user[password_confirmation]"
+               value="{{ reset.password_confirmation }}">
+
+        % if reset.errors.has_key?(:password_confirmation)
+          <span class="help-inline">
+            You need to confirm your new password.
+          </span>
+        % end
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn" type="submit" name="proceed"
+              value="commit">Reset Password</button>
+    </div>
+  </fieldset>
+</form>

@@ -20,6 +20,15 @@ scope do
     assert_equal "Password Reset Instructions", mail.subject
     assert_equal "foo@bar.com", mail.to
 
-    assert mail.text.include?("/#{u.id}/#{u.key[:password_reset_token].get}")
+    secret_path = "/password/reset/#{u.id}/#{u.key[:password_reset_token].get}"
+
+    assert mail.text.include?(secret_path)
+
+    visit secret_path
+    fill_in "user[password]", with: "foobarbaz"
+    fill_in "user[password_confirmation]", with: "foobarbaz"
+    click_button "Reset Password"
+
+    assert has_content?("Password has been reset successfully.")
   end
 end

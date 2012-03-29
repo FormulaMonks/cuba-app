@@ -46,10 +46,6 @@ class Guests < Cuba
     end
 
     on "password/recovery" do
-      on get do
-        res.write view("password/recovery", title: "Password Recovery")
-      end
-
       on post, param("email") do |email|
         user = User.fetch(email)
 
@@ -61,10 +57,47 @@ class Guests < Cuba
           res.redirect "/password/recovery", 303
         end
       end
+
+      on default do
+        if req.post?
+          session[:error] = "Please enter an email address."
+        end
+
+        res.write view("password/recovery", title: "Password Recovery")
+      end
     end
 
     on "password/instructions" do
       res.write view("password/instructions", title: "Password Recovery")
+    end
+
+    on "password/reset/:id/:token" do |id, token|
+      user = PasswordRecovery.authenticate(id, token)
+
+      on user.nil? do
+        notfound("The URL you specified might have expired.")
+      end
+
+      on post, param("user") do |params|
+        reset = PasswordReset.new(params)
+
+        if reset.valid?
+          user.update(password: reset.password) && authenticate(user)
+
+          session[:success] = "Password has been reset successfully."
+          res.redirect "/dashboard"
+        else
+          res.write view("password/reset", id: id, token: token,
+                         title: "Password Reset", reset: reset)
+        end
+      end
+
+      on default do
+        reset = PasswordReset.new({})
+
+        res.write view("password/reset", id: id, token: token,
+                       title: "Password Reset", reset: reset)
+      end
     end
   end
 end
