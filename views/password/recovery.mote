@@ -1,4 +1,8 @@
-<form action="/password/recovery" method="post">
-  <input type="text" name="email" value="">
-  <button type="submit" name="commit">Next</button>
+<div class="page-header">
+  <h1>Password Recovery</h1>
+</div>
+
+<form class="well form-inline" action="/password/recovery" method="post">
+  <input type="text" name="email" value="" placeholder="Enter your email address">
+  <button class="btn" type="submit" name="commit">Next</button>
 </form>
