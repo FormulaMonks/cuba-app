@@ -16,6 +16,13 @@ module PasswordRecovery
                    text: MESSAGE % [user.id, token])
   end
 
+  def self.authenticate(id, token)
+    return unless user = User[id]
+    return unless user.key[:password_reset_token].get == token
+
+    return user
+  end
+
   MESSAGE = <<-EOT
     Greetings,
 
