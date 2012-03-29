@@ -37,10 +37,6 @@ Cuba.define do
     res.write view("home", title: "My Site Home")
   end
 
-  on "about" do
-    res.write partial("about")
-  end
-
   on authenticated(User) do
     run Users
   end
