@@ -13,6 +13,11 @@
         padding-top: 60px; /* 60px to make the container go all the
                               way to the bottom of the topbar */
       }
+
+      footer {
+        margin-top: 40px;
+        border-top: 1px solid #EEE;
+      }
     </style>
     <script src="/js/less.js"></script>
 
@@ -29,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Site name</a>
+          <a class="brand" href="/">Site name</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/">Home</a></li>
@@ -41,7 +46,7 @@
                 <li><a href="/signup">Signup</a></li>
               % end
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
     </div>
@@ -50,6 +55,16 @@
       {{ partial "notices", session: session }}
 
       {{ content }}
-    </div> <!-- /container -->
+
+      <footer class="footer">
+        <p>
+          <small>
+            This template is brought to you by <a href="http://citrusbyte.com">Citrusbyte</a>.
+            Clone <a href="https://github.com/citrusbyte/cuba-app">this app</a>
+            and get your project started.
+          </small>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
