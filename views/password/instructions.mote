@@ -1,1 +1,8 @@
-<h1>We've sent you password reset instructions.</h1>
+<div class="page-header">
+  <h1>We've sent you password reset instructions.</h1>
+</div>
+
+<p>
+  Please follow the instructions in the email sent to you
+  in order to recover your password.
+</p>
