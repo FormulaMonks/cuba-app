@@ -14,6 +14,9 @@ Cuba.use Rack::Static,
   root: "public",
   urls: ["/js", "/css", "/less", "/img"]
 
+Cuba.use Rack::Protection
+Cuba.use Rack::Protection::RemoteReferrer
+
 # We use the more secure PBKDF2 password strategy (iterations = 5000)
 Shield::Password.strategy = Shield::Password::PBKDF2
 
