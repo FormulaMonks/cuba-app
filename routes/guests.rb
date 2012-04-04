@@ -8,7 +8,7 @@ class Guests < Cuba
       on post, param("username"), param("password") do |user, pass|
         if login(User, user, pass, req[:remember])
           session[:success] = "You have successfully logged in."
-          res.redirect(session.delete(:return_to) || "/")
+          res.redirect("/dashboard")
         else
           session[:error] = "Invalid username and/or password combination."
           res.write view("login", title: "Login", username: user)
