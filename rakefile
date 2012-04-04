@@ -5,3 +5,21 @@ task :test do
 
   Cutest.run(Dir["test/*.rb"])
 end
+
+namespace :migrate do
+  task :sqlite do
+    system("rm db/sqlite.db && sqlite3 db/sqlite.db < db/sqlite.schema.sql")
+
+    puts "-----> Created sqlite://db/sqlite.db"
+  end
+
+  task :postgres do
+    DBNAME = "appdb"
+
+    system("dropdb %s 2>/dev/null" % DBNAME)
+    system("createdb %s --encoding=utf-8" % DBNAME)
+    system("env psql -d %s -f db/pg.schema.sql -q" % DBNAME)
+
+    puts "-----> Created postgres://localhost/%s" % DBNAME
+  end
+end

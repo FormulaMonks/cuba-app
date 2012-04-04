@@ -1,11 +1,7 @@
-class Admin < Ohm::Model
+class Admin < Sequel::Model
   include Shield::Model
 
-  attribute :email
-  attribute :crypted_password
-  unique :email
-
   def self.fetch(identifier)
-    with(:email, identifier)
+    filter(email: identifier).first
   end
 end

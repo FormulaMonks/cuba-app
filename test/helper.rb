@@ -8,7 +8,10 @@ require "malone/test"
 
 prepare do
   Capybara.reset!
-  Ohm.flush
+
+  DB.tables.each do |table|
+    DB[table].truncate
+  end
 end
 
 class Cutest::Scope

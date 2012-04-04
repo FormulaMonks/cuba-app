@@ -4,7 +4,8 @@ module PasswordRecovery
   def self.init(user)
     token = SecureRandom.hex(10)
 
-    user.key[:password_reset_token].setex(86400 * 2, token)
+    user.update(password_reset_token: token,
+                password_reset_expires_at: (Time.now.utc + 86400 * 2).to_i)
 
     deliver(user, token)
   end
@@ -18,7 +19,8 @@ module PasswordRecovery
 
   def self.authenticate(id, token)
     return unless user = User[id]
-    return unless user.key[:password_reset_token].get == token
+    return unless user.password_reset_token == token
+    return unless user.password_reset_expires_at > Time.now.utc.to_i
 
     return user
   end

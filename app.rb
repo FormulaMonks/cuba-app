@@ -21,7 +21,7 @@ Cuba.use Rack::Protection::RemoteReferrer
 Malone.connect(url: Settings::MALONE_URL)
 
 # Configure your redis settings in env.sh. We're connecting to DB 15.
-Ohm.connect(url: Settings::REDIS_URL)
+DB = Sequel.connect(Settings::DATABASE_URL)
 
 Dir["./lib/**/*.rb"].each     { |rb| require rb }
 Dir["./models/**/*.rb"].each  { |rb| require rb }

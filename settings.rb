@@ -3,11 +3,11 @@ module Settings
     ENV[key] ||= value
   end
 
-  MAIL_FROM   = ENV["MAIL_FROM"]
-  REDIS_URL   = ENV["REDIS_URL"]
-  MALONE_URL  = ENV["MALONE_URL"]
-  HOST        = ENV["APP_HOST"]
-  NAME        = ENV["APP_NAME"]
-  DESCRIPTION = ENV["APP_DESCRIPTION"]
-  AUTHOR      = ENV["APP_AUTHOR"]
+  MAIL_FROM    = ENV["MAIL_FROM"]
+  DATABASE_URL = ENV["DATABASE_URL"]
+  MALONE_URL   = ENV["MALONE_URL"]
+  HOST         = ENV["APP_HOST"]
+  NAME         = ENV["APP_NAME"]
+  DESCRIPTION  = ENV["APP_DESCRIPTION"]
+  AUTHOR       = ENV["APP_AUTHOR"]
 end
