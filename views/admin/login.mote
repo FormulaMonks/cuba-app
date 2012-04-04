@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>Admin Login</h1>
+</div>
+
+<form class="well" method="post">
+  <label>Email</label>
+  <input type="text" name="username" value="{{ username }}">
+
+  <label>
+    Password
+  </label>
+  <input type="password" name="password" value="">
+
+  <label class="checkbox">
+    <input type="checkbox" name="remember" value="1">
+    Remember me
+  </label>
+
+  <button class="btn" type="submit" name="submit">Login</button>
+</form>

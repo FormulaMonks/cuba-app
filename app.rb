@@ -17,9 +17,6 @@ Cuba.use Rack::Static,
 Cuba.use Rack::Protection
 Cuba.use Rack::Protection::RemoteReferrer
 
-# We use the more secure PBKDF2 password strategy (iterations = 5000)
-Shield::Password.strategy = Shield::Password::PBKDF2
-
 # Configure your default setting in env.sh by overriding MALONE_URL.
 Malone.connect(url: Settings::MALONE_URL)
 
@@ -42,6 +39,10 @@ Cuba.define do
 
   on authenticated(User) do
     run Users
+  end
+
+  on "admin" do
+    run Admins
   end
 
   on default do
